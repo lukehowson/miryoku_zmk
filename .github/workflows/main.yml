@@ -79,7 +79,7 @@ jobs:
           fi
           echo "shield_arg=${SHIELD_ARG}" >> $GITHUB_OUTPUT
           keyboard_split="$keyboard"
-          keyboard_base=`echo "$keyboard" | sed 's/_\(left\|right\)//'`
+          keyboard_base=$(echo "$keyboard" | sed 's/_\(left\|right\|dongle\)//')
 
           configfile="${GITHUB_WORKSPACE}/miryoku_zmk/miryoku/custom_config.h"
 
@@ -181,7 +181,7 @@ jobs:
 
           artifact_build_name=`echo $artifact_build_name | tr ' ' '-'`
           echo "artifact_build_name=$artifact_build_name" >> $GITHUB_OUTPUT
-          artifact_generic_name=`echo "$artifact_build_name" | sed 's/_\(left\|right\)//'`
+          artifact_generic_name=`echo "$artifact_build_name" | sed 's/_\(left\|right\|dongle\)//'`
           echo "artifact_generic_name=$artifact_generic_name" >> $GITHUB_OUTPUT
 
           user=`echo "$zmk" | cut -f 1 -d '/'`
